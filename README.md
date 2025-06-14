@@ -1,10 +1,23 @@
 # [Stackoverflow](https://stackoverflow.com) Code Challenge #2: Secret messages in game boards
 
+
+> [!CAUTION]
+> Sorry for my English!
+
+
 Code Challange #2 Stackoverflow URL: [https://stackoverflow.com/beta/challenges/79651567/code-challenge-2-secret-messages-in-game-boards](https://stackoverflow.com/beta/challenges/79651567/code-challenge-2-secret-messages-in-game-boards)
 
-- [Summary](#summary)
-- [Plan](#plan)
-  - [Examples](#examples)
+- [Stackoverflow Code Challenge #2: Secret messages in game boards](#stackoverflow-code-challenge-2-secret-messages-in-game-boards)
+  - [Summary](#summary)
+  - [Plan](#plan)
+    - [Examples](#examples)
+      - [Values](#values)
+      - [Words to encode with 8 or 9 characters](#words-to-encode-with-8-or-9-characters)
+        - [SECRETED](#secreted)
+
+
+> [!WARNING]  
+> In Github Markdown can't use `<style>`, so it not render tables (in Plan examples and more correctly). <br/>Try to open another markdown reader what can handle `<style>` tags. 
 
 ## Summary
 
@@ -27,7 +40,8 @@ Return SUDOKU table structure:
 `P` : Next position (SUDOKU block) of the next character (value: 1 - 9)<br/>
 <br/>
 `C` : Commands ... (Yeah good name soo professional ...) (value: 1 - 3 or 5 or 7 - 8)<br/>
-1-3 for value higher than 100 | 5 if this is the first character | 7-9 if the value higher than 100 and this is the first character (in this case we just subtract 1-3 from the 10)<br/>
+ 1-3 for value higher than 100 | 5 if this is the first character | 7-9 if the value higher than 100 and this is the first character (in this case we just subtract  1-3 from the 10)<br/>
+4 or 6 for NULL values (If the word length smaller than 9 we can ignore this blocks and generate random values in this block for some SALT ;D )
 <br/>
 `V` : Value: 1 - 9 except after the `C` first cell, because it just between 2 and 9. And if its 1 this is a number divisible by 10
 <br/>
@@ -93,7 +107,6 @@ Return SUDOKU table structure:
 <tr> <td>V</td><td>V</td><td>V</td> <tr>
 </table>
 </div>
-
 <div class="flex-row">
 <table>
 <tr> <td>V</td><td>V</td><td>V</td> <tr>
@@ -111,7 +124,6 @@ Return SUDOKU table structure:
 <tr> <td data-status="C">C</td><td>V</td><td>V</td> <tr>
 </table>
 </div>
-
 <div class="flex-row">
 <table>
 <tr> <td>V</td><td>V</td><td>V</td> <tr>
@@ -130,58 +142,54 @@ Return SUDOKU table structure:
 </table>
 </div>
 </div>
-
-
 <div class="flex-col" style="font-size: 10px">
 <div class="flex-row">
 <table>
-<tr> <td data-status="P">1-9</td><td data-status="C">1-3</td><td>2-9</td> <tr>
+<tr> <td data-status="P">1-9</td><td data-status="C"> 1-9</td><td> 1-9</td> <tr>
 <tr> <td>1-9</td><td>1-9</td> <td>1-9</td> <tr>
 <tr> <td>1-9</td><td>1-9</td> <td>1-9</td> <tr>
 </table>
 <table>
 <tr>  <td>1-9</td><td data-status="P">1-9</td><td data-status="C">1-9</td> <tr>
-<tr>  <td>2-9</td> <td>1-9</td> <td>1-9</td> <tr>
+<tr>  <td> 1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 <tr>  <td>1-9</td> <td>1-9</td><td>1-9</td> <tr>
 </table>
 <table>
 <tr>  <td>1-9</td> <td>1-9</td><td data-status="P">1-9</td> <tr>
-<tr> <td data-status="C">1-3</td> <td>1-9</td> <td>1-9</td> <tr>
+<tr> <td data-status="C"> 1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 </table>
 </div>
-
 <div class="flex-row">
 <table>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
-<tr> <td data-status="P">1-9</td><td data-status="C">2-3</td> <td>1-9</td> <tr>
+<tr> <td data-status="P">1-9</td><td data-status="C">1-9</td> <td>1-9</td> <tr>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 </table>
 <table>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
-<tr>  <td>1-9</td><td data-status="P">1-9</td><td data-status="C">1-3</td> <tr>
-<tr>  <td>2-9</td> <td>1-9</td> <td>1-9</td> <tr>
+<tr>  <td>1-9</td><td data-status="P">1-9</td><td data-status="C"> 1-9</td> <tr>
+<tr>  <td> 1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 </table>
 <table>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 <tr>  <td>1-9</td> <td>1-9</td><td data-status="P">1-9</td> <tr>
-<tr> <td data-status="C">1-3</td> <td>2-9</td> <td>1-9</td> <tr>
+<tr> <td data-status="C"> 1-9</td> <td> 1-9</td> <td>1-9</td> <tr>
 </table>
 </div>
-
 <div class="flex-row">
 <table>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
-<tr> <td data-status="P">1-9</td><td data-status="C">1-3</td> <td>2-9</td> <tr>
+<tr> <td data-status="P">1-9</td><td data-status="C"> 1-9</td> <td> 1-9</td> <tr>
 </table>
 <table>
-<tr>  <td>2-9</td> <td>1-9</td> <td>1-9</td> <tr>
+<tr>  <td> 1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
-<tr>  <td>1-9</td><td data-status="P">1-9</td><td data-status="C">1-3</td> <tr>
+<tr>  <td>1-9</td><td data-status="P">1-9</td><td data-status="C"> 1-9</td> <tr>
 </table>
 <table>
-<tr> <td data-status="C">1-3</td> <td>2-9</td> <td>1-9</td> <tr>
+<tr> <td data-status="C"> 1-9</td> <td> 1-9</td> <td>1-9</td> <tr>
 <tr>  <td>1-9</td> <td>1-9</td> <td>1-9</td> <tr>
 <tr>  <td>1-9</td> <td>1-9</td><td data-status="P">1-9</td> <tr>
 </table>
@@ -191,6 +199,8 @@ Return SUDOKU table structure:
 
 
 ### Examples
+
+#### Values
 
 In these examples, we only examine the DEC value of ASCII characters. The `P` cell stay empty.
 
@@ -280,3 +290,77 @@ And we have just another 67 solution to write DEC values (99 - 32)
 <tr><td> </td><td> </td><td> </td><tr>
 </table>
 </div>
+
+
+#### Words to encode with 8 or 9 characters
+
+##### SECRETED
+
+||||||||||||
+|-|-|-|-|-|-|-|-|-|-|-|
+|#BLOCK|-|1 |2 |3 |4 |5 |6 |7 |8 |9 |
+|CHAR |-|S |E |C |R |E |T |E |D |-|
+|DEC  |-|83|69|67|82|69|84|69|68|-|
+
+<br/>
+
+> [!NOTE]
+> In this case we don't randomize the word characters.
+ 
+<div class="flex-col" style="font-size: 10px">
+<div class="flex-row">
+<table>
+<tr> <td data-status="P">2</td><td data-status="C">5</td><td>  </td> <tr>
+<tr> <td> </td><td> </td> <td> </td> <tr>
+<tr> <td> </td><td>3</td><td></td> <tr>
+</table>
+<table>
+<tr>  <td> </td><td data-status="P">3</td><td data-status="C"> </td> <tr>
+<tr>  <td>  </td> <td> </td> <td> </td> <tr>
+<tr>  <td>9</td> <td> </td><td> </td> <tr>
+</table>
+<table>
+<tr>  <td> </td> <td> </td><td data-status="P">4</td> <tr>
+<tr> <td data-status="C">  </td> <td> </td> <td> </td> <tr>
+<tr>  <td> </td> <td>7</td> <td> </td> <tr>
+</table>
+</div>
+<div class="flex-row">
+<table>
+<tr>  <td></td> <td>2</td> <td> </td> <tr>
+<tr> <td data-status="P">5</td><td data-status="C"> </td> <td> </td> <tr>
+<tr>  <td> </td> <td> </td> <td> </td> <tr>
+</table>
+<table>
+<tr>  <td>9</td> <td> </td> <td> </td> <tr>
+<tr>  <td> </td><td data-status="P">6</td><td data-status="C">  </td> <tr>
+<tr>  <td>  </td> <td> </td> <td> </td> <tr>
+</table>
+<table>
+<tr>  <td> </td> <td> </td> <td> </td> <tr>
+<tr>  <td>4</td> <td> </td><td data-status="P">7</td> <tr>
+<tr> <td data-status="C">  </td> <td>  </td> <td> </td> <tr>
+</table>
+</div>
+<div class="flex-row">
+<table>
+<tr>  <td> </td> <td> </td> <td>9</td> <tr>
+<tr>  <td> </td> <td> </td> <td> </td> <tr>
+<tr> <td data-status="P">8</td><td data-status="C">  </td> <td>  </td> <tr>
+</table>
+<table>
+<tr>  <td>  </td> <td> </td> <td> </td> <tr>
+<tr>  <td>8</td> <td> </td> <td> </td> <tr>
+<tr>  <td> </td><td data-status="P">9</td><td data-status="C">  </td> <tr>
+</table>
+<table>
+<tr> <td data-status="C">6</td> <td>  </td> <td> </td> <tr>
+<tr>  <td> </td> <td>5</td><td> </td> <tr>
+<tr>  <td> </td> <td> </td><td data-status="P">1</td> <tr>
+</table>
+</div>
+</div>
+
+We can use longer words, it render 2 or more Sudoku table. Now I don't know how to rendomize the sudoku blocks and get the first character. But maybe a generated 'fake' sudoku table what is an option table with 4 and 6 values in `C` cell and the `P` cell init the Sudoku tables sequence. BUT it just a FUTURE FEATURE.
+
+Thanks!

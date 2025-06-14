@@ -39,9 +39,9 @@ Return SUDOKU table structure:
 
 `P` : Next position (SUDOKU block) of the next character (value: 1 - 9)<br/>
 <br/>
-`C` : Commands ... (Yeah good name soo professional ...) (value: 1 - 3 or 5 or 7 - 8)<br/>
+`C` : Commands ... (Yeah good name soo professional ...) (value: 1 - 9)<br/>
  1-3 for value higher than 100 | 5 if this is the first character | 7-9 if the value higher than 100 and this is the first character (in this case we just subtract  1-3 from the 10)<br/>
-4 or 6 for NULL values (If the word length smaller than 9 we can ignore this blocks and generate random values in this block for some SALT ;D )
+4 or 6 for NULL values (If the word length smaller than 9 we can ignore this blocks and generate random values in this block for some SALT ;D )<br/>
 <br/>
 `V` : Value: 1 - 9 except after the `C` first cell, because it just between 2 and 9. And if its 1 this is a number divisible by 10
 <br/>

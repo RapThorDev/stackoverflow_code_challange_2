@@ -14,6 +14,7 @@ Code Challange #2 Stackoverflow URL: [https://stackoverflow.com/beta/challenges/
       - [Values](#values)
       - [Words to encode with 8 or 9 characters](#words-to-encode-with-8-or-9-characters)
         - [SECRETED](#secreted)
+  - [Usage](#usage)
 
 
 > [!WARNING]  
@@ -69,7 +70,7 @@ Return SUDOKU table structure:
     .flex-col {
         display: flex;
         flex-flow: column;
-        gap: 3px;
+        gap: 4px;
         padding-bottom: 32px
     }
 
@@ -196,7 +197,6 @@ Return SUDOKU table structure:
 </div>
 </div>
 </div>
-
 
 ### Examples
 
@@ -364,3 +364,30 @@ And we have just another 67 solution to write DEC values (99 - 32)
 We can use longer words, it render 2 or more Sudoku table. Now I don't know how to rendomize the sudoku blocks and get the first character. But maybe a generated 'fake' sudoku table what is an option table with 4 and 6 values in `C` cell and the `P` cell init the Sudoku tables sequence. BUT it just a FUTURE FEATURE.
 
 Thanks!
+
+## Usage
+
+Add one encryptable word parameter
+
+```python
+$ python3 app.py "SECRETED"
+```
+
+Output:
+
+```bash
+SECRETED
++-------+-------+-------+
+| 2 5 . | . 3 . | . . 4 |
+| . . . | . . . | . . . |
+| . 3 . | 9 . . | . 7 . |
++-------+-------+-------+
+| . 2 . | 9 . . | . . . |
+| 5 . . | . 6 . | 4 . 7 |
+| . . . | . . . | . . . |
++-------+-------+-------+
+| . . 9 | . . . | 6 . . |
+| . . . | 8 . . | . 5 . |
+| 8 . . | . 9 . | . . 1 |
++-------+-------+-------+
+```

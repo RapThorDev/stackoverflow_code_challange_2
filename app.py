@@ -109,17 +109,20 @@ class Block:
         elif 32 <= ascii_dec_value <= 99:
             d1, d2 = parse_ascii_digits(ascii_dec_value)
             v_cell_key = first_value_cell_key + (d1 - 3)
+            v_cell_key = v_cell_key if v_cell_key < 10 else v_cell_key - 9
 
-            result = {
-                v_cell_key if v_cell_key < 10 else v_cell_key - 9 : Cell.v_cell(d2)
-            }
+            result = { }
 
             if is_first_char:
                 result[first_value_cell_key - 1] = Cell.c_cell(5)
 
-            if is_first_char and d2 == 0:
+            if d2 == 0:
                 result[first_value_cell_key] = Cell.v_cell(1)
-                result[first_value_cell_key + d1] = Cell.v_cell(d1)
+                result[v_cell_key] = Cell.v_cell(1)
+            else:
+                result[v_cell_key] = Cell.v_cell(d2)
+
+            
             return result
         
         elif 100 <= ascii_dec_value <= 167:
@@ -145,18 +148,9 @@ class Block:
                 first_value_cell_key - 1: Cell.c_cell(c_cell_value),
                 first_value_cell_key + d1: Cell.v_cell(d2),
             }
-        
-        else:
-            c_cell_value = Random().choice([4, 6])
-            v_cell_key = Random().choice(self.__value_cell_keys_by_command_key(first_value_cell_key - 1))
-            v_cell_value = Random().choice(AVAILABLE_KEYS)
-            return {
-                first_value_cell_key - 1: Cell.c_cell(c_cell_value),
-                v_cell_key: Cell.v_cell(v_cell_value)
-            }
 
     def __value_cell_keys_by_command_key(self, command_key: int) -> list[int]:
-        start_key = AVAILABLE_KEYS.index(command_key) + 1
+        start_key = command_key + 1 if command_key + 1 < 10 else (command_key + 1) - 9
         return AVAILABLE_KEYS[start_key:start_key + 7]
 
     def __ascii_plus_dec_value_by_command_value(self, command_value: int) -> int:

@@ -370,7 +370,9 @@ Thanks!
 Add one encryptable word parameter
 
 ```python
-$ python3 app.py "SECRETED"
+$ python3 app.py
+
+SECRETED
 ```
 
 Output:

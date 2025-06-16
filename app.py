@@ -216,10 +216,11 @@ class Board:
 
 class Main:
     def main(self, argv):
-        encryptable_word = argv[1]
-        with_shuffle = argv[2] if len(argv) > 2 else False
-
-        print(f"Encryptable word: {encryptable_word}")
+        print(f"Type encryptable word (like SECRETED): ", end='')
+        encryptable_word = input()
+        print(f"Shuffle the result? (y/N) ", end='')
+        with_shuffle = input()
+        with_shuffle = True if with_shuffle.lower() == "y" else False
 
         board_list = self.__init_sudoku_structure(encryptable_word, with_shuffle)
         for board in board_list:
@@ -241,7 +242,7 @@ class Main:
         for index, item in enumerate(encryptable_word_chars_map):
             current_position = item["index"]
             next_position = encryptable_word_chars_map[index + 1]["index"] if index + 1 < len(encryptable_word_chars_map) else random.choice(available_block_indexes)
-            available_block_indexes.remove(current_position)
+            available_block_indexes.remove(next_position)
 
             block_list.append(Block.init(
                 current_position,
@@ -254,9 +255,6 @@ class Main:
         current_count = len(block_list)
 
         if current_count < total_blocks:
-            last_index = block_list[-1].cell_dictionary.keys()
-            last_position = max(last_index) if last_index else current_count
-
             for i in range(current_count + 1, total_blocks + 1):
                 current_position = i
                 next_position = i + 1 if i < total_blocks else 1  # körbe mutat

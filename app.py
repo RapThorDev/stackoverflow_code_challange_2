@@ -246,8 +246,8 @@ class Main:
 
         for index, item in enumerate(encryptable_word_chars_map):
             current_position = item["index"]
-            available_block_indexes.remove(current_position)
             next_position = encryptable_word_chars_map[index + 1]["index"] if index + 1 < len(encryptable_word_chars_map) else random.choice(available_block_indexes)
+            available_block_indexes.remove(current_position)
 
             block_list.append(Block.init(
                 current_position,
